@@ -10,6 +10,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatToolbarHarness } from '@angular/material/toolbar/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 @NgModule({
   declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent],
@@ -20,6 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatGridListModule
   ],
   providers: [MatToolbarHarness],
   bootstrap: [AppComponent],

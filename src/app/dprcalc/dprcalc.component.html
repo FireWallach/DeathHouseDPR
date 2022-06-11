@@ -1,1 +1,18 @@
-<p>dprcalc works!</p>
+<div class="playerStats">
+    <h1>Player Stats</h1>
+    <div>
+        <mat-form-field appearance="legacy" class="attackBonusValue">
+            <mat-label>Attack Bonus</mat-label>
+            <input #attackBonus matInput placeholder="0">
+        </mat-form-field>
+        <mat-button-toggle-group #polarity="matButtonToggleGroup">
+            <mat-button-toggle value="+">
+                <mat-icon>add</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="-">
+                <mat-icon>remove</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <div>Selected value: {{polarity.value}}{{attackBonus.value}}</div>
+    </div>
+</div>
