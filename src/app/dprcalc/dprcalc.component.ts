@@ -16,20 +16,23 @@ export class DPRCalcComponent implements OnInit {
   ];
 
   constructor() {}
+  public debug = false;
 
   ngOnInit(): void {}
 
   public attackBonus: number = 0;
-  public polarity: number = 1;
-  public enemyArmorClass: number = 10;
-  public attackDamage: number = 8;
+  public attackDamageModifier: number = 0;
   public attackDiceQuantity: number = 1;
-  public chanceToHit: string = (100-((21-this.enemyArmorClass - (this.attackBonus*this.polarity))/20)*100).toFixed(2);
-  public averageDamagePerAttack: number = (this.attackDamage+1)/2;
-  public averageDamagePerRound: number = this.averageDamagePerAttack*this.attackDiceQuantity*(Number(this.chanceToHit)/100);
+  public enemyArmorClass: number = 10;
+  public polarity: number = 1;
+  public attackDamage: number = 0;
+  public averageDieRoll: number = 0;
+  public chanceToHit: string = "Please enter values";
+  public averageDamagePerRound: string = "Please enter values";
 
   public recalculateValues() {
-    this.chanceToHit = (100-((21-this.enemyArmorClass - (this.attackBonus*this.polarity))/20)*100).toFixed(2);
-    this.averageDamagePerRound = this.averageDamagePerAttack*this.attackDiceQuantity*(Number(this.chanceToHit)/100);
+    this.chanceToHit = (((21-(this.enemyArmorClass-this.attackBonus)) / 20 ) * 100 ).toFixed(2);
+    this.averageDieRoll = (Number(this.attackDamage)/2) + 0.5;
+    this.averageDamagePerRound = (((this.attackDiceQuantity*(this.averageDieRoll + (this.averageDieRoll/20)))+this.attackDamageModifier) * (Number(this.chanceToHit)/100)).toFixed(2);
   }
 }

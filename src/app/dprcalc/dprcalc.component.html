@@ -44,13 +44,18 @@
     </mat-grid-tile>
     <mat-grid-tile >
         <div class="results">
-            <mat-card>
-                <mat-card-title>Damage Per Round</mat-card-title>
-                <mat-card-subtitle>Chance to hit: {{chanceToHit}}%</mat-card-subtitle>
-                <mat-card-actions>
-                    <p class="mat-primary">{{averageDamagePerRound}}</p>
-                </mat-card-actions>
-            </mat-card>
+            <h1 class="sectionHeader">Results</h1>
+            <div>
+                <p *ngIf="debug">Attack Bonus: {{attackBonus}}</p>
+                <p *ngIf="debug">Attack Damage Modifier: {{attackDamageModifier}}</p>
+                <p *ngIf="debug">Attack Damage Die Value: {{attackDamage}}</p>
+                <p *ngIf="debug">Attack Di(c)e Quantity: {{attackDiceQuantity}}</p>
+                <p *ngIf="debug">Polarity: {{polarity}}</p>
+                <p *ngIf="debug">Enemy Armor Class: {{enemyArmorClass}}</p>
+                <p *ngIf="debug">Average Attack Die Roll: {{averageDieRoll}}</p>
+                <p>Chance to Hit: {{chanceToHit}}</p>
+                <p>Average Damage Per Round: {{averageDamagePerRound}}</p>
+            </div>
         </div>
     </mat-grid-tile>
 </mat-grid-list>
