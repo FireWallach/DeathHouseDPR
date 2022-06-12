@@ -13,7 +13,7 @@ function requireHTTPS(req, res, next) {
 app.use('/', express.static('dist/dprcalc'));
 app.use(requireHTTPS);
 app.get('/*', function(req, res) {
-  res.sendFile('index.html', {root: 'dist/<name-on-package.json>/'}
+  res.sendFile('index.html', {root: 'dist/dprcalc/'}
 );
 });
-app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${process.env.PORT || port}!`));
+app.listen(process.env.PORT || port, () => console.log(`Listening on port ${process.env.PORT || port}!`));
