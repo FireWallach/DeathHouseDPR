@@ -33,6 +33,7 @@
 
 .attackBonusValue {
     padding-right: 2em;
+    padding-left:5%
 }
 
 .grid-layout-custom {
@@ -47,5 +48,12 @@
 }
 
 .sectionHeader {
-    justify-content: center;
+    padding:5%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.mat-grid-tile {
+    border-right: solid 2px rgb(0, 0, 0);
 }
