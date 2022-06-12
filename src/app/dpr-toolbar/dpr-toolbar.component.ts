@@ -12,7 +12,7 @@ const GITHUB_ICON =
 @Component({
   selector: 'app-dpr-toolbar',
   templateUrl: './dpr-toolbar.component.html',
-  styleUrls: ['./dpr-toolbar.component.css'],
+  styleUrls: ['./dpr-toolbar.component.scss'],
 })
 export class DprToolbarComponent implements OnInit {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {

@@ -1,16 +1,5 @@
 @use 'sass:map';
-@import '~@angular/material/theming';
-
-$app-primary: mat-palette($mat-pink);
-$app-accent: mat-palette($mat-blue-grey);
-$theme: mat-light-theme((color: (primary: $app-primary,
-                accent: $app-accent,
-            )));
-
-$color: mat-get-color-config($theme);
-
-$primary: map-get($color, primary);
-$accent: map-get($color, accent);
+@import '../theme.scss';
 
 .playerStats {
     display: flex;
@@ -19,7 +8,6 @@ $accent: map-get($color, accent);
     justify-content: top;
     width: 100%;
     height: 100%;
-    background-color: grey;
     padding: 5%
 }
 
@@ -30,7 +18,6 @@ $accent: map-get($color, accent);
     justify-content: top;
     width: 100%;
     height: 100%;
-    background-color: darkgrey;
     padding: 5%
 }
 
@@ -41,8 +28,7 @@ $accent: map-get($color, accent);
     justify-content: top;
     width: 100%;
     height: 100%;
-    background-color: lightgrey;
-    padding: 5%
+    padding-top: 5%
 }
 
 .attackBonusValue {

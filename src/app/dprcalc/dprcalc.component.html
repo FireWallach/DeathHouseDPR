@@ -1,7 +1,7 @@
 <mat-grid-list cols="3" rowHeight="100%">
     <mat-grid-tile id="left-sidebar">
         <div class="playerStats">
-            <h1 class="mat-primary">Player Stats</h1>
+            <h1>Player Stats</h1>
             <div>
                 <mat-form-field appearance="legacy" class="attackBonusValue">
                     <mat-label>Attack Bonus</mat-label>
@@ -32,6 +32,7 @@
             </div>
         </div>
     </mat-grid-tile>
+    <mat-divider [vertical]="true" style="height: 100px;"></mat-divider>
     <mat-grid-tile>
         <div class="enemyStats">
             <h1 class="mat-primary">Enemy Stats</h1>
@@ -43,7 +44,7 @@
             </div>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile>
+    <mat-grid-tile >
         <div class="results">
             <mat-card>
                 <mat-card-title>Damage Per Round</mat-card-title>

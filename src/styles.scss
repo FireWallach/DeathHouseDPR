@@ -1,7 +1,25 @@
-@use '@angular/material' as mat;
-@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/theming';
 
-$my-palette: mat.$indigo-palette;
+// Define a custom mixin that takes in the current theme
+@mixin theme-color-grabber($theme) {
+  // Parse the theme and create variables for each color in the pallete
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  // Create theme specfic styles
+  .primaryColorBG {
+    background-color: mat-color($primary);
+  }
+
+  .accentColorBG {
+    background-color: mat-color($accent);
+  }
+
+  .warnColorBG {
+    background-color: mat-color($warn);
+  }
+}
 
 html,
 body {
@@ -10,4 +28,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+mat-label {
+  
 }
