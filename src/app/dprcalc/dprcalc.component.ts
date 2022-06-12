@@ -16,7 +16,7 @@ export class DPRCalcComponent implements OnInit {
   ];
 
   constructor() {}
-  public debug = false;
+  public debug = true;
 
   ngOnInit(): void {}
 
@@ -31,7 +31,7 @@ export class DPRCalcComponent implements OnInit {
   public averageDamagePerRound: string = "Please enter values";
 
   public recalculateValues() {
-    this.chanceToHit = (((21-(this.enemyArmorClass-this.attackBonus)) / 20 ) * 100 ).toFixed(2);
+    this.chanceToHit = (((21-(this.enemyArmorClass-(this.attackBonus*this.polarity))) / 20 ) * 100 ).toFixed(2);
     this.averageDieRoll = (Number(this.attackDamage)/2) + 0.5;
     this.averageDamagePerRound = (((this.attackDiceQuantity*(this.averageDieRoll + (this.averageDieRoll/20)))+this.attackDamageModifier) * (Number(this.chanceToHit)/100)).toFixed(2);
   }

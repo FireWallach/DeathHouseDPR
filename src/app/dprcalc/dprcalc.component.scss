@@ -32,8 +32,9 @@
 }
 
 .attackBonusValue {
-    padding-right: 2em;
-    padding-left:5%
+    padding-right: 10%;
+    padding-left:5%;
+    width: 40%;
 }
 
 .grid-layout-custom {
@@ -56,4 +57,8 @@
 
 .mat-grid-tile {
     border-right: solid 2px rgb(0, 0, 0);
+}
+
+.polarity {
+    padding-left: 5%;
 }
