@@ -16,4 +16,9 @@ export class DPRCalcComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  public attackBonus: number = 0;
+  public polarity: number = 1;
+  public enemyArmorClass: number = 10;
+  public chanceToHit: number = ((21-this.enemyArmorClass - (this.attackBonus*this.polarity))/20)*100;
 }

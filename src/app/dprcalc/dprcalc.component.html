@@ -1,23 +1,43 @@
-<mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile>
+<mat-grid-list cols="3" rowHeight="100%">
+    <mat-grid-tile id="left-sidebar">
         <div class="playerStats">
-        <h1>Player Stats</h1>
-        <div>
-            <mat-form-field appearance="legacy" class="attackBonusValue">
-                <mat-label>Attack Bonus</mat-label>
-                <input #attackBonus matInput placeholder="0">
-            </mat-form-field>
-            <mat-button-toggle-group #polarity="matButtonToggleGroup">
-                <mat-button-toggle value="+">
-                    <mat-icon>add</mat-icon>
-                </mat-button-toggle>
-                <mat-button-toggle value="-">
-                    <mat-icon>remove</mat-icon>
-                </mat-button-toggle>
-            </mat-button-toggle-group>
-            <div>Selected value: {{polarity.value}}{{attackBonus.value}}</div>
+            <h1 class="mat-primary">Player Stats</h1>
+            <div>
+                <mat-form-field appearance="legacy" class="attackBonusValue">
+                    <mat-label>Attack Bonus</mat-label>
+                    <input matInput required [(ngModel)]="attackBonus" [value]="attackBonus" required>
+                </mat-form-field>
+                <mat-button-toggle-group [(ngModel)]="polarity">
+                    <mat-button-toggle [value]="1">
+                        <mat-icon>add</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle [value]="-1">
+                        <mat-icon>remove</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
         </div>
-    </div>
-</mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="enemyStats">
+            <h1 class="mat-primary">Enemy Stats</h1>
+            <div>
+                <mat-form-field appearance="legacy" class="dprValue">
+                    <mat-label>Armor Class</mat-label>
+                    <input matInput required [(ngModel)]="enemyArmorClass" [value]="enemyArmorClass" required>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="results">
+            <mat-card>
+                <mat-card-title>Damage Per Round</mat-card-title>
+                <mat-card-subtitle>Chance to hit: {{chanceToHit}}</mat-card-subtitle>
+                <mat-card-actions>
+                    <p class="mat-primary">DAMAGE GOES HERE</p>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
 </mat-grid-list>
