@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { properties } from 'src/properties';
 
 @Component({
   selector: 'app-dprcalc',
@@ -9,7 +10,7 @@ export class DPRCalcComponent implements OnInit {
   public dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
 
   constructor() {}
-  public debug = true;
+  public debug = properties.debug;
 
   ngOnInit(): void {}
 
@@ -22,6 +23,7 @@ export class DPRCalcComponent implements OnInit {
   public averageDieRoll: number = 0;
   public chanceToHit: string = 'Please enter values';
   public averageDamagePerRound: string = 'Please enter values';
+  public advantageStatus: number = 0; // 1 = advantage, 0 = normal, -1 = disadvantage
 
   public recalculateValues() {
     this.chanceToHit = (
