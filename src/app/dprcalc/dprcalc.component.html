@@ -1,61 +1,84 @@
 <mat-grid-list cols="3" rowHeight="100%">
-    <mat-grid-tile id="left-sidebar">
-        <div class="playerStats">
-            <h1 class="sectionHeader">Player Stats</h1>
-            <div>
-                <mat-form-field appearance="legacy" class="attackBonusValue">
-                    <mat-label>Attack Bonus</mat-label>
-                    <input matInput required [(ngModel)]="attackBonus" [value]="attackBonus" (input)="recalculateValues()" required>
-                </mat-form-field>
-                <mat-button-toggle-group [(ngModel)]="polarity">
-                    <mat-button-toggle (change)="recalculateValues()" [value]="1">
-                        <mat-icon>add</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (change)="recalculateValues()" [value]="-1">
-                        <mat-icon>remove</mat-icon>
-                    </mat-button-toggle>
-                </mat-button-toggle-group>
-                <mat-form-field appearance="legacy" class="attackDamage">
-                    <mat-label>Damage Di(c)e Quantity</mat-label>
-                    <input matInput required [(ngModel)]="attackDiceQuantity" [value]="attackDiceQuantity" (input)="recalculateValues()"
-                        required>
-                </mat-form-field>
-                <mat-form-field appearance="fill" class="attackDamage">
-                    <mat-label>Die</mat-label>
-                    <mat-select (selectionChange)="recalculateValues()" [(ngModel)]="attackDamage">
-                        <mat-option *ngFor="let die of dice" [value]="die.substring(1)">
-                            {{die}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-        <div class="enemyStats">
-            <h1 class="sectionHeader">Enemy Stats</h1>
-            <div>
-                <mat-form-field appearance="legacy" class="dprValue">
-                    <mat-label>Armor Class</mat-label>
-                    <input matInput required [(ngModel)]="enemyArmorClass" [value]="enemyArmorClass" (input)="recalculateValues()" required>
-                </mat-form-field>
-            </div>
-        </div>
-    </mat-grid-tile>
-    <mat-grid-tile >
-        <div class="results">
-            <h1 class="sectionHeader">Results</h1>
-            <div>
-                <p *ngIf="debug">Attack Bonus: {{attackBonus}}</p>
-                <p *ngIf="debug">Attack Damage Modifier: {{attackDamageModifier}}</p>
-                <p *ngIf="debug">Attack Damage Die Value: {{attackDamage}}</p>
-                <p *ngIf="debug">Attack Di(c)e Quantity: {{attackDiceQuantity}}</p>
-                <p *ngIf="debug">Polarity: {{polarity}}</p>
-                <p *ngIf="debug">Enemy Armor Class: {{enemyArmorClass}}</p>
-                <p *ngIf="debug">Average Attack Die Roll: {{averageDieRoll}}</p>
-                <p>Chance to Hit: {{chanceToHit}}</p>
-                <p>Average Damage Per Round: {{averageDamagePerRound}}</p>
-            </div>
-        </div>
-    </mat-grid-tile>
+  <mat-grid-tile id="left-sidebar">
+    <div class="playerStats">
+      <h1 class="sectionHeader">Player Stats</h1>
+      <div>
+        <mat-form-field appearance="legacy" class="attackBonusValue">
+          <mat-label>Attack Bonus</mat-label>
+          <input
+            matInput
+            required
+            [(ngModel)]="attackBonus"
+            [value]="attackBonus"
+            (input)="recalculateValues()"
+            required
+          />
+        </mat-form-field>
+        <mat-button-toggle-group [(ngModel)]="polarity">
+          <mat-button-toggle (change)="recalculateValues()" [value]="1">
+            <mat-icon>add</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle (change)="recalculateValues()" [value]="-1">
+            <mat-icon>remove</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-form-field appearance="legacy" class="attackDamage">
+          <mat-label>Damage Di(c)e Quantity</mat-label>
+          <input
+            matInput
+            required
+            [(ngModel)]="attackDiceQuantity"
+            [value]="attackDiceQuantity"
+            (input)="recalculateValues()"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="attackDamage">
+          <mat-label>Die</mat-label>
+          <mat-select
+            (selectionChange)="recalculateValues()"
+            [(ngModel)]="attackDamage"
+          >
+            <mat-option *ngFor="let die of dice" [value]="die.substring(1)">
+              {{ die }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="enemyStats">
+      <h1 class="sectionHeader">Enemy Stats</h1>
+      <div>
+        <mat-form-field appearance="legacy" class="dprValue">
+          <mat-label>Armor Class</mat-label>
+          <input
+            matInput
+            required
+            [(ngModel)]="enemyArmorClass"
+            [value]="enemyArmorClass"
+            (input)="recalculateValues()"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="results">
+      <h1 class="sectionHeader">Results</h1>
+      <div>
+        <p *ngIf="debug">Attack Bonus: {{ attackBonus }}</p>
+        <p *ngIf="debug">Attack Damage Modifier: {{ attackDamageModifier }}</p>
+        <p *ngIf="debug">Attack Damage Die Value: {{ attackDamage }}</p>
+        <p *ngIf="debug">Attack Di(c)e Quantity: {{ attackDiceQuantity }}</p>
+        <p *ngIf="debug">Polarity: {{ polarity }}</p>
+        <p *ngIf="debug">Enemy Armor Class: {{ enemyArmorClass }}</p>
+        <p *ngIf="debug">Average Attack Die Roll: {{ averageDieRoll }}</p>
+        <p>Chance to Hit: {{ chanceToHit }}</p>
+        <p>Average Damage Per Round: {{ averageDamagePerRound }}</p>
+      </div>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>

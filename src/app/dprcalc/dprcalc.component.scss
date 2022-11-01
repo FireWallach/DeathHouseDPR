@@ -1,64 +1,64 @@
-@use 'sass:map';
-@import '../theme.scss';
+@use "sass:map";
+@import "../theme.scss";
 
 .playerStats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    width: 100%;
-    height: 100%;
-    padding: 5%
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
 }
 
 .enemyStats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    width: 100%;
-    height: 100%;
-    padding: 5%
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  width: 100%;
+  height: 100%;
+  padding: 5%;
 }
 
 .results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    width: 100%;
-    height: 100%;
-    padding-top: 5%
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
 }
 
 .attackBonusValue {
-    padding-right: 10%;
-    padding-left:5%;
-    width: 40%;
+  padding-right: 10%;
+  padding-left: 5%;
+  width: 40%;
 }
 
 .grid-layout-custom {
-    width: 50vw;
-    height: 50vh;
+  width: 50vw;
+  height: 50vh;
 }
 
 .attackDamage {
-    width: 40%;
-    padding-left: 5%;
-    padding-right: 5%;
+  width: 40%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .sectionHeader {
-    padding:5%;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 24px;
-    font-weight: 500;
+  padding: 5%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .mat-grid-tile {
-    border-right: solid 2px rgb(0, 0, 0);
+  border-right: solid 2px rgb(0, 0, 0);
 }
 
 .polarity {
-    padding-left: 5%;
+  padding-left: 5%;
 }

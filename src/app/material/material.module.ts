@@ -81,7 +81,7 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -119,8 +119,8 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSortModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [MatDatepickerModule],
 })
-export class MaterialModule { }
+export class MaterialModule {}

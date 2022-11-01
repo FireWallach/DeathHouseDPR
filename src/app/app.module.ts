@@ -8,15 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DprToolbarComponent } from './dpr-toolbar/dpr-toolbar.component';
 import { MaterialModule } from './material/material.module';
 
-
-
 @NgModule({
   declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
