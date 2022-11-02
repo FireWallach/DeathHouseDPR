@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { properties } from 'src/properties';
+import { player } from 'src/app/interfaces/player';
+import { enemy } from 'src/app/interfaces/enemy';
+import { dprCalculations } from '../interfaces/dprCalculations';
 
 @Component({
   selector: 'app-dprcalc',
@@ -7,35 +10,55 @@ import { properties } from 'src/properties';
   styleUrls: ['./dprcalc.component.scss'],
 })
 export class DPRCalcComponent implements OnInit {
+  public debug = properties.debug;
+  public selectedDie = 'd8';
   public dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+  public dprCalculations: dprCalculations = {
+    averageDieRoll: 0,
+    fChanceToHit: null,
+    aChanceToHit: null,
+    dChanceToHit: null,
+    aDPR: null,
+    daDPR: null,
+    aaDPR: null,
+  };
+  public player: player = {
+    attackBonus: 0,
+    attackDamageModifier: 0,
+    attackDiceQuantity: 1,
+    polarity: 1,
+    attackDamage: 8,
+  };
+  public enemy: enemy = {
+    armorClass: 10,
+  };
 
   constructor() {}
-  public debug = properties.debug;
 
-  ngOnInit(): void {}
-
-  public attackBonus: number = 0;
-  public attackDamageModifier: number = 0;
-  public attackDiceQuantity: number = 1;
-  public enemyArmorClass: number = 10;
-  public polarity: number = 1;
-  public attackDamage: number = 0;
-  public averageDieRoll: number = 0;
-  public chanceToHit: string = 'Please enter values';
-  public averageDamagePerRound: string = 'Please enter values';
-  public advantageStatus: number = 0; // 1 = advantage, 0 = normal, -1 = disadvantage
+  ngOnInit(): void {
+    this.recalculateValues();
+  }
 
   public recalculateValues() {
-    this.chanceToHit = (
-      ((21 - (this.enemyArmorClass - this.attackBonus * this.polarity)) / 20) *
-      100
-    ).toFixed(2);
-    this.averageDieRoll = Number(this.attackDamage) / 2 + 0.5;
-    this.averageDamagePerRound = (
-      (this.attackDiceQuantity *
-        (this.averageDieRoll + this.averageDieRoll / 20) +
-        this.attackDamageModifier) *
-      (Number(this.chanceToHit) / 100)
-    ).toFixed(2);
+    this.player.attackDamage = Number.parseInt(this.selectedDie.substring(1));
+    this.dprCalculations.fChanceToHit =
+      (21 -
+        (this.enemy.armorClass -
+          this.player.attackBonus * this.player.polarity)) /
+      20;
+    this.dprCalculations.dChanceToHit = Math.pow(
+      this.dprCalculations.fChanceToHit,
+      2
+    );
+    this.dprCalculations.aChanceToHit =
+      1 -
+      Math.pow(this.enemy.armorClass - this.player.attackBonus - 1, 2) / 400;
+    this.dprCalculations.averageDieRoll = this.player.attackDamage / 2 + 0.5;
+    this.dprCalculations.aDPR =
+      (this.player.attackDiceQuantity *
+        (this.dprCalculations.averageDieRoll +
+          this.dprCalculations.averageDieRoll / 20) +
+        this.player.attackDamageModifier) *
+      (this.dprCalculations.fChanceToHit / 100);
   }
 }

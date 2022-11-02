@@ -8,13 +8,13 @@
           <input
             matInput
             required
-            [(ngModel)]="attackBonus"
-            [value]="attackBonus"
+            [(ngModel)]="player.attackBonus"
+            [value]="player.attackBonus"
             (input)="recalculateValues()"
             required
           />
         </mat-form-field>
-        <mat-button-toggle-group [(ngModel)]="polarity">
+        <mat-button-toggle-group [(ngModel)]="player.polarity">
           <mat-button-toggle (change)="recalculateValues()" [value]="1">
             <mat-icon>add</mat-icon>
           </mat-button-toggle>
@@ -27,19 +27,20 @@
           <input
             matInput
             required
-            [(ngModel)]="attackDiceQuantity"
-            [value]="attackDiceQuantity"
+            [(ngModel)]="player.attackDiceQuantity"
+            [value]="player.attackDiceQuantity"
             (input)="recalculateValues()"
             required
           />
         </mat-form-field>
         <mat-form-field appearance="fill" class="attackDamage">
-          <mat-label>Die</mat-label>
+          <mat-label>Damage Die</mat-label>
           <mat-select
             (selectionChange)="recalculateValues()"
-            [(ngModel)]="attackDamage"
+            [(ngModel)]="selectedDie"
+            [value]="selectedDie"
           >
-            <mat-option *ngFor="let die of dice" [value]="die.substring(1)">
+            <mat-option *ngFor="let die of dice" [value]="die">
               {{ die }}
             </mat-option>
           </mat-select>
@@ -56,8 +57,8 @@
           <input
             matInput
             required
-            [(ngModel)]="enemyArmorClass"
-            [value]="enemyArmorClass"
+            [(ngModel)]="enemy.armorClass"
+            [value]="enemy.armorClass"
             (input)="recalculateValues()"
             required
           />
@@ -69,16 +70,35 @@
     <div class="results">
       <h1 class="sectionHeader">Results</h1>
       <div>
-        <p *ngIf="debug">Attack Bonus: {{ attackBonus }}</p>
-        <p *ngIf="debug">Attack Damage Modifier: {{ attackDamageModifier }}</p>
-        <p *ngIf="debug">Attack Damage Die Value: {{ attackDamage }}</p>
-        <p *ngIf="debug">Attack Di(c)e Quantity: {{ attackDiceQuantity }}</p>
-        <p *ngIf="debug">Polarity: {{ polarity }}</p>
-        <p *ngIf="debug">Enemy Armor Class: {{ enemyArmorClass }}</p>
-        <p *ngIf="debug">Average Attack Die Roll: {{ averageDieRoll }}</p>
-        <p *ngIf="debug">Advantage: {{ advantageStatus }}</p>
-        <p>Chance to Hit: {{ chanceToHit }}</p>
-        <p>Average Damage Per Round: {{ averageDamagePerRound }}</p>
+        <h1>Flat Roll</h1>
+        <p *ngIf="debug">Attack Bonus: {{ player.attackBonus }}</p>
+        <p *ngIf="debug">
+          Attack Damage Modifier: {{ player.attackDamageModifier }}
+        </p>
+        <p *ngIf="debug">Attack Damage Die Value: {{ player.attackDamage }}</p>
+        <p *ngIf="debug">
+          Attack Di(c)e Quantity: {{ player.attackDiceQuantity }}
+        </p>
+        <p *ngIf="debug">Polarity: {{ player.polarity }}</p>
+        <p *ngIf="debug">Enemy Armor Class: {{ enemy.armorClass }}</p>
+        <p *ngIf="debug">
+          Average Attack Die Roll: {{ dprCalculations.averageDieRoll }}
+        </p>
+        <p *ngIf="debug">Selected Die: {{ selectedDie }}</p>
+        <p>Chance to Hit: {{ dprCalculations.fChanceToHit }}</p>
+        <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
+      </div>
+      <hr class="rounded" />
+      <div>
+        <h2>Advantage</h2>
+        <p>Chance to Hit: {{ dprCalculations.aChanceToHit }}</p>
+        <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
+      </div>
+      <hr class="rounded" />
+      <div>
+        <h2>Disadvantage</h2>
+        <p>Chance to Hit: {{ dprCalculations.dChanceToHit }}</p>
+        <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
       </div>
     </div>
   </mat-grid-tile>
