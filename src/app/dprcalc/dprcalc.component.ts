@@ -59,6 +59,18 @@ export class DPRCalcComponent implements OnInit {
         (this.dprCalculations.averageDieRoll +
           this.dprCalculations.averageDieRoll / 20) +
         this.player.attackDamageModifier) *
-      (this.dprCalculations.fChanceToHit / 100);
+      this.dprCalculations.fChanceToHit;
+    this.dprCalculations.daDPR =
+      (this.player.attackDiceQuantity *
+        (this.dprCalculations.averageDieRoll +
+          this.dprCalculations.averageDieRoll / 20) +
+        this.player.attackDamageModifier) *
+      this.dprCalculations.dChanceToHit;
+    this.dprCalculations.aaDPR =
+      (this.player.attackDiceQuantity *
+        (this.dprCalculations.averageDieRoll +
+          this.dprCalculations.averageDieRoll / 20) +
+        this.player.attackDamageModifier) *
+      this.dprCalculations.dChanceToHit;
   }
 }

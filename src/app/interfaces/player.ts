@@ -1,7 +1,7 @@
 export interface player {
-    attackBonus: number;
-    attackDamageModifier: number;
-    attackDiceQuantity: number;
-    polarity: number;
-    attackDamage: number;
+  attackBonus: number;
+  attackDamageModifier: number;
+  attackDiceQuantity: number;
+  polarity: number;
+  attackDamage: number;
 }
