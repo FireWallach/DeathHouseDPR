@@ -26,7 +26,6 @@ export class DPRCalcComponent implements OnInit {
     attackBonus: 0,
     attackDamageModifier: 0,
     attackDiceQuantity: 1,
-    polarity: 1,
     attackDamage: 8,
   };
   public enemy: enemy = {
@@ -42,10 +41,7 @@ export class DPRCalcComponent implements OnInit {
   public recalculateValues() {
     this.player.attackDamage = Number.parseInt(this.selectedDie.substring(1));
     this.dprCalculations.fChanceToHit =
-      (21 -
-        (this.enemy.armorClass -
-          this.player.attackBonus * this.player.polarity)) /
-      20;
+      (21 - (this.enemy.armorClass - this.player.attackBonus)) / 20;
     this.dprCalculations.dChanceToHit = Math.pow(
       this.dprCalculations.fChanceToHit,
       2
