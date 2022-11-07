@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent],
@@ -21,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatInputModule,
     MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

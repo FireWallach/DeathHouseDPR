@@ -45,15 +45,25 @@
     <div class="enemyStats">
       <h1 class="sectionHeader">Enemy Stats</h1>
       <div>
-        <mat-form-field>
-          <mat-label>Autopopulate Monster Stats</mat-label>
-          <input matInput type="text" [matAutocomplete]="auto" />
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let item of options" [value]="item">
-              {{ item }}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+        <form [formGroup]="formGroup">
+          <mat-form-field>
+            <mat-label>Autopopulate Monster Stats</mat-label>
+            <input
+              formControlName="monsterName"
+              matInput
+              type="text"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete
+              #auto="matAutocomplete"
+              (optionSelected)="updateMonsterStats($event.option.getLabel())"
+            >
+              <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                {{ item }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
       </div>
       <div>
         <mat-form-field appearance="legacy" class="dprValue">

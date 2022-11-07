@@ -5,6 +5,7 @@ import { enemy } from 'src/app/interfaces/enemy';
 import { dprCalculations } from '../interfaces/dprCalculations';
 import { DndApiService } from '../services/dnd-api.service';
 import { MonsterList } from '../interfaces/monstersResponse';
+import { Monster } from '../interfaces/monster';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -13,6 +14,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./dprcalc.component.scss'],
 })
 export class DPRCalcComponent implements OnInit {
+  public formGroup: FormGroup;
   public debug = properties.debug;
   public selectedDie = 'd8';
   public dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
@@ -21,6 +23,7 @@ export class DPRCalcComponent implements OnInit {
     results: [],
   };
   options: string[] = [];
+  filteredOptions: string[] = [];
   public dprCalculations: dprCalculations = {
     averageDieRoll: 0,
     fChanceToHit: null,
@@ -40,14 +43,29 @@ export class DPRCalcComponent implements OnInit {
     armorClass: 10,
   };
 
-  constructor(private dndApiService: DndApiService) {}
+  constructor(private dndApiService: DndApiService, private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      monsterName: [''],
+    });
+  }
 
   ngOnInit(): void {
+    this.initForm();
     this.recalculateValues();
     this.retrieveMonsterList();
   }
 
-  initForm() {}
+  initForm() {
+    this.formGroup.get('monsterName')?.valueChanges.subscribe((response) => {
+      this.filerData(response);
+    });
+  }
+
+  filerData(enteredData: string) {
+    this.filteredOptions = this.options.filter((item) => {
+      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1;
+    });
+  }
 
   private retrieveMonsterList() {
     this.dndApiService.getMonsters().subscribe((data) => {
@@ -55,7 +73,19 @@ export class DPRCalcComponent implements OnInit {
       this.monsterListResults.results.forEach((monster) => {
         this.options.push(monster.name);
       });
+      this.filteredOptions = this.options;
     });
+  }
+
+  public updateMonsterStats(selectedMonster: string) {
+    this.monsterListResults.results.forEach((monster) => {
+      if (monster.name === selectedMonster) {
+        this.dndApiService.getMonsterByName(monster.name).subscribe((data) => {
+          this.enemy.armorClass = data.armor_class;
+        });
+      }
+    });
+    this.recalculateValues();
   }
 
   public recalculateValues() {
