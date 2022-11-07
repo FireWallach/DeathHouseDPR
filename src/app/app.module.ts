@@ -7,6 +7,9 @@ import { DPRCalcComponent } from './dprcalc/dprcalc.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DprToolbarComponent } from './dpr-toolbar/dpr-toolbar.component';
 import { MaterialModule } from './material/material.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent],
@@ -15,6 +18,9 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
+    MatInputModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

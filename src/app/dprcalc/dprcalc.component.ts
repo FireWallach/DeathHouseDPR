@@ -3,6 +3,9 @@ import { properties } from 'src/properties';
 import { player } from 'src/app/interfaces/player';
 import { enemy } from 'src/app/interfaces/enemy';
 import { dprCalculations } from '../interfaces/dprCalculations';
+import { DndApiService } from '../services/dnd-api.service';
+import { MonsterList } from '../interfaces/monstersResponse';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dprcalc',
@@ -13,6 +16,11 @@ export class DPRCalcComponent implements OnInit {
   public debug = properties.debug;
   public selectedDie = 'd8';
   public dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+  public monsterListResults: MonsterList = {
+    count: 0,
+    results: [],
+  };
+  options: string[] = [];
   public dprCalculations: dprCalculations = {
     averageDieRoll: 0,
     fChanceToHit: null,
@@ -32,10 +40,22 @@ export class DPRCalcComponent implements OnInit {
     armorClass: 10,
   };
 
-  constructor() {}
+  constructor(private dndApiService: DndApiService) {}
 
   ngOnInit(): void {
     this.recalculateValues();
+    this.retrieveMonsterList();
+  }
+
+  initForm() {}
+
+  private retrieveMonsterList() {
+    this.dndApiService.getMonsters().subscribe((data) => {
+      this.monsterListResults = data;
+      this.monsterListResults.results.forEach((monster) => {
+        this.options.push(monster.name);
+      });
+    });
   }
 
   public recalculateValues() {
