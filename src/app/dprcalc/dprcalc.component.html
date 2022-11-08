@@ -83,36 +83,36 @@
   <mat-grid-tile>
     <div class="results">
       <h1 class="sectionHeader">Results</h1>
-      <div>
-        <h1>Flat Roll</h1>
-        <p *ngIf="debug">Attack Bonus: {{ player.attackBonus }}</p>
-        <p *ngIf="debug">
-          Attack Damage Modifier: {{ player.attackDamageModifier }}
-        </p>
-        <p *ngIf="debug">Attack Damage Die Value: {{ player.attackDamage }}</p>
-        <p *ngIf="debug">
-          Attack Di(c)e Quantity: {{ player.attackDiceQuantity }}
-        </p>
-        <p *ngIf="debug">Enemy Armor Class: {{ enemy.armorClass }}</p>
-        <p *ngIf="debug">
-          Average Attack Die Roll: {{ dprCalculations.averageDieRoll }}
-        </p>
-        <p *ngIf="debug">Selected Die: {{ selectedDie }}</p>
-        <p>Chance to Hit: {{ dprCalculations.fChanceToHit }}</p>
-        <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
-      </div>
-      <hr class="rounded" />
-      <div>
-        <h2>Advantage</h2>
-        <p>Chance to Hit: {{ dprCalculations.aChanceToHit }}</p>
-        <p>Average Damage Per Round: {{ dprCalculations.aaDPR }}</p>
-      </div>
-      <hr class="rounded" />
-      <div>
-        <h2>Disadvantage</h2>
-        <p>Chance to Hit: {{ dprCalculations.dChanceToHit }}</p>
-        <p>Average Damage Per Round: {{ dprCalculations.daDPR }}</p>
-      </div>
+        <div class="resultsItem">
+          <h1>Flat Roll</h1>
+          <p *ngIf="debug">Attack Bonus: {{ player.attackBonus }}</p>
+          <p *ngIf="debug">
+            Attack Damage Modifier: {{ player.attackDamageModifier }}
+          </p>
+          <p *ngIf="debug">Attack Damage Die Value: {{ player.attackDamage }}</p>
+          <p *ngIf="debug">
+            Attack Di(c)e Quantity: {{ player.attackDiceQuantity }}
+          </p>
+          <p *ngIf="debug">Enemy Armor Class: {{ enemy.armorClass }}</p>
+          <p *ngIf="debug">
+            Average Attack Die Roll: {{ dprCalculations.averageDieRoll }}
+          </p>
+          <p *ngIf="debug">Selected Die: {{ selectedDie }}</p>
+          <p>Chance to Hit: {{ dprCalculations.fChanceToHit }}</p>
+          <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
+        </div>
+        <hr>
+        <div class="resultsItem">
+          <h1>Advantage</h1>
+          <p>Chance to Hit: {{ dprCalculations.aChanceToHit }}</p>
+          <p>Average Damage Per Round: {{ dprCalculations.aaDPR }}</p>
+        </div>
+        <hr>
+        <div class="resultsItem">
+          <h1>Disadvantage</h1>
+          <p>Chance to Hit: {{ dprCalculations.dChanceToHit }}</p>
+          <p>Average Damage Per Round: {{ dprCalculations.daDPR }}</p>
+        </div>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
