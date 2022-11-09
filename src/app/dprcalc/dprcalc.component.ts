@@ -80,7 +80,7 @@ export class DPRCalcComponent implements OnInit {
   public updateMonsterStats(selectedMonster: string) {
     this.monsterListResults.results.forEach((monster) => {
       if (monster.name === selectedMonster) {
-        this.dndApiService.getMonsterByName(monster.name).subscribe((data) => {
+        this.dndApiService.getMonsterByName(monster).subscribe((data) => {
           this.enemy.armorClass = data.armor_class;
         });
       }

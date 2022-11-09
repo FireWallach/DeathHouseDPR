@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MonsterList } from '../interfaces/monstersResponse';
+import { MonsterList, monsterListing } from '../interfaces/monstersResponse';
 import { Monster } from '../interfaces/monster';
 
 @Injectable({
@@ -14,11 +14,7 @@ export class DndApiService {
     return this.http.get<MonsterList>('https://www.dnd5eapi.co/api/monsters');
   }
 
-  public getMonsterByName(name: string): Observable<Monster> {
-    return this.http.get<Monster>(
-      `https://www.dnd5eapi.co/api/monsters/${name
-        .replace(/\s+/g, '-')
-        .toLowerCase()}`
-    );
+  public getMonsterByName(monster: monsterListing): Observable<Monster> {
+    return this.http.get<Monster>(`https://www.dnd5eapi.co${monster.url}`);
   }
 }
