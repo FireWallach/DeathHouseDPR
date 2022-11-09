@@ -1,45 +1,10 @@
 <mat-grid-list cols="3" rowHeight="100%">
   <mat-grid-tile id="left-sidebar">
-    <div class="playerStats">
-      <h1 class="sectionHeader">Player Stats</h1>
-      <div>
-        <mat-form-field appearance="legacy" class="attackBonusValue">
-          <mat-label>Attack Bonus</mat-label>
-          <input
-            matInput
-            required
-            [(ngModel)]="player.attackBonus"
-            [value]="player.attackBonus"
-            (input)="recalculateValues()"
-            required
-          />
-        </mat-form-field>
-
-        <mat-form-field appearance="legacy" class="attackDamage">
-          <mat-label>Damage Di(c)e Quantity</mat-label>
-          <input
-            matInput
-            required
-            [(ngModel)]="player.attackDiceQuantity"
-            [value]="player.attackDiceQuantity"
-            (input)="recalculateValues()"
-            required
-          />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="attackDamage">
-          <mat-label>Damage Die</mat-label>
-          <mat-select
-            (selectionChange)="recalculateValues()"
-            [(ngModel)]="selectedDie"
-            [value]="selectedDie"
-          >
-            <mat-option *ngFor="let die of dice" [value]="die">
-              {{ die }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
+    <app-player-stats
+    [player]="player"
+    (recalculateValues)="recalculateValues()"
+    (selectedDie)="selectDie($event)"
+    ></app-player-stats>
   </mat-grid-tile>
   <mat-grid-tile>
     <div class="enemyStats">
@@ -101,13 +66,13 @@
           <p>Chance to Hit: {{ dprCalculations.fChanceToHit }}</p>
           <p>Average Damage Per Round: {{ dprCalculations.aDPR }}</p>
         </div>
-        <hr>
+        <mat-divider></mat-divider>
         <div class="resultsItem">
           <h1>Advantage</h1>
           <p>Chance to Hit: {{ dprCalculations.aChanceToHit }}</p>
           <p>Average Damage Per Round: {{ dprCalculations.aaDPR }}</p>
         </div>
-        <hr>
+        <mat-divider></mat-divider>
         <div class="resultsItem">
           <h1>Disadvantage</h1>
           <p>Chance to Hit: {{ dprCalculations.dChanceToHit }}</p>

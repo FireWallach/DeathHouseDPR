@@ -1,9 +1,12 @@
 @use "sass:map";
 @import "../theme.scss";
 
-hr {
+mat-divider {
   width: 75%;
-  border-color: black;
+}
+
+app-player-stats{
+  align-self: flex-start;
 }
 
 .playerStats {
@@ -48,10 +51,6 @@ hr {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 24px;
   font-weight: 500;
-}
-
-.mat-grid-tile {
-  border-right: solid 2px rgb(0, 0, 0);
 }
 
 .results {
