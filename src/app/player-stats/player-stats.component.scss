@@ -1,15 +1,9 @@
 
 :host
 .playerStats{
-    border: 2px red solid;
     display: flex;
     flex-direction: column;
 }
-
-mat-form-field{
-    border: 2px blue solid;
-}
-
 .sectionHeader {
     padding: 5%;
     font-family: Roboto, "Helvetica Neue", sans-serif;
