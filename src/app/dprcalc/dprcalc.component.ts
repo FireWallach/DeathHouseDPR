@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { properties } from 'src/properties';
 import { player } from 'src/app/interfaces/player';
 import { enemy } from 'src/app/interfaces/enemy';
 import { dprCalculations } from '../interfaces/dprCalculations';
 import { DndApiService } from '../services/dnd-api.service';
 import { MonsterList } from '../interfaces/monstersResponse';
-import { Monster } from '../interfaces/monster';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { standardDice } from '../constants/5eConstants';
 
 @Component({
   selector: 'app-dprcalc',
   templateUrl: './dprcalc.component.html',
-  styleUrls: ['./dprcalc.component.scss'],
+  styleUrls: ['./dprcalc.component.scss']
 })
 export class DPRCalcComponent implements OnInit {
   public formGroup: FormGroup;
   public debug = properties.debug;
-  public selectedDie = 'd8';
-  public dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+  public dice = standardDice;
+  public selectedDie = this.dice[2];
   public monsterListResults: MonsterList = {
     count: 0,
     results: [],
@@ -55,6 +55,10 @@ export class DPRCalcComponent implements OnInit {
     this.retrieveMonsterList();
   }
 
+  selectDie(die: string){
+    this.selectedDie = die;
+  }
+
   initForm() {
     this.formGroup.get('monsterName')?.valueChanges.subscribe((response) => {
       this.filerData(response);
@@ -89,6 +93,7 @@ export class DPRCalcComponent implements OnInit {
   }
 
   public recalculateValues() {
+    console.log(this.selectedDie);
     this.player.attackDamage = Number.parseInt(this.selectedDie.substring(1));
     this.dprCalculations.fChanceToHit =
       (21 - (this.enemy.armorClass - this.player.attackBonus)) / 20;

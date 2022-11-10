@@ -11,9 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PlayerStatsComponent } from './player-stats/player-stats.component';
 
 @NgModule({
-  declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent],
+  declarations: [AppComponent, DPRCalcComponent, DprToolbarComponent, PlayerStatsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
